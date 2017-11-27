@@ -55,6 +55,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jlblFast = new javax.swing.JLabel();
         jlblRegister = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jlblRName = new javax.swing.JLabel();
+        txtFID = new javax.swing.JTextField();
         jlblRAddress = new javax.swing.JLabel();
         jlblOName = new javax.swing.JLabel();
         txtOName = new javax.swing.JTextField();
@@ -68,7 +70,6 @@ public class NewJFrame extends javax.swing.JFrame {
         txtContactNo = new javax.swing.JTextField();
         jlblRName1 = new javax.swing.JLabel();
         jtfID = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         btnSubmit = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
 
@@ -102,6 +103,13 @@ public class NewJFrame extends javax.swing.JFrame {
         jlblRegister.setFont(new java.awt.Font("Times New Roman", 3, 48)); // NOI18N
         jlblRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlblRegister.setText("Restaurant Registration");
+
+        jlblRName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jlblRName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jlblRName.setText("Food ID");
+
+        txtFID.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtFID.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         jlblRAddress.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jlblRAddress.setText("Restaurant's Address :");
@@ -150,21 +158,12 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("jLabel1");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlblRName1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtfID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(347, 347, 347))
-            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
                     .addComponent(lblContactNo)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jlblIC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -179,6 +178,19 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(txtOName, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtContactNo))
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jlblRName1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfID, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(347, 347, 347))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jlblRName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFID, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(200, 200, 200))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,8 +220,10 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jlblEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(25, 25, 25))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlblRName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         btnSubmit.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -277,15 +291,15 @@ public class NewJFrame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "This employee ID already exists.", "DUPLICATE RECORD", JOptionPane.ERROR_MESSAGE);
                 }
                 else{
-                    String insertStr = "INSERT INTO " + tableName + " VALUES(?,?,?,?,?,?)";
+                    String insertStr = "INSERT INTO " + tableName + " VALUES(?,?,?,?,?,?,?)";
                     stat = conn.prepareStatement(insertStr);
                     stat.setString(1, OID);
-                    stat.setString(2, txtIC.getText());
+                    stat.setString(2, txtFID.getText());
                     stat.setString(3, txtIC.getText());
                     stat.setString(4, txtContactNo.getText());
                     stat.setString(5, txtRAddress.getText());
                     stat.setString(6, txtEmail.getText());
-
+                    stat.setString(7, txtFID.getText());
                     
                     stat.executeUpdate();
                     JOptionPane.showMessageDialog(null, "New employee '"+ OID + "' is add", "Successfully add", JOptionPane.INFORMATION_MESSAGE);
@@ -349,7 +363,6 @@ public class NewJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSubmit;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -358,12 +371,14 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jlblIC;
     private javax.swing.JLabel jlblOName;
     private javax.swing.JLabel jlblRAddress;
+    private javax.swing.JLabel jlblRName;
     private javax.swing.JLabel jlblRName1;
     private javax.swing.JLabel jlblRegister;
     private javax.swing.JTextField jtfID;
     private javax.swing.JLabel lblContactNo;
     private javax.swing.JTextField txtContactNo;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtFID;
     private javax.swing.JTextField txtIC;
     private javax.swing.JTextField txtOName;
     private javax.swing.JTextArea txtRAddress;
