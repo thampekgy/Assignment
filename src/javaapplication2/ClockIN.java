@@ -35,7 +35,7 @@ public class ClockIN extends javax.swing.JFrame {
             String password = "nbuser";
             con = DriverManager.getConnection(host, username, password);
         } catch (SQLException ex) {
-            Logger.getLogger(javaapplication2.ClockIN.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(sbs.NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -127,7 +127,7 @@ public class ClockIN extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "You have successfully clock in.");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(javaapplication2.ClockIN.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(sbs.NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -147,7 +147,7 @@ public class ClockIN extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "You need to clock in before you can clock out.");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(javaapplication2.ClockIN.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(sbs.NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
