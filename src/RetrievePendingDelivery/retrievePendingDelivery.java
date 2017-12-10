@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication1;
+package RetrievePendingDelivery;
 
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -154,7 +154,7 @@ public class retrievePendingDelivery extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
-    private java.util.List<javaapplication1.Orders> ordersList;
+    private java.util.List<RetrievePendingDelivery.Orders> ordersList;
     private javax.persistence.Query ordersQuery;
     // End of variables declaration//GEN-END:variables
 }
